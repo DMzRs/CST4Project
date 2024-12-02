@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.automatatheoryproject.HomeController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 10px; -fx-background-radius: 7px;">
+         <children>
+            <Pane layoutX="200.0" layoutY="122.0" prefHeight="264.0" prefWidth="400.0" style="-fx-background-color: #149981; -fx-background-radius: 22px; -fx-border-color: #FFFFFF; -fx-border-radius: 20px; -fx-border-width: 5px;">
+               <children>
+                  <Button layoutX="71.0" layoutY="190.0" mnemonicParsing="false" onMouseClicked="#enterMainPage" text="Enter">
+                     <font>
+                        <Font name="Franklin Gothic Medium Cond" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Blend mode="DARKEN" />
+                     </effect>
+                  </Button>
+                  <Button layoutX="272.0" layoutY="190.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="64.0" text="Exit">
+                     <font>
+                        <Font name="Franklin Gothic Medium Cond" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Button>
+                  <Label fx:id="automataLabel" alignment="CENTER" layoutX="16.0" layoutY="62.0" text="AUTOMATA THEORY" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Franklin Gothic Medium" size="43.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="567.0" text="By: Ferrer, Ranain, Docor, Balodo &amp; Mendoza" textAlignment="CENTER" textFill="#095559">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

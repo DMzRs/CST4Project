@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.automatatheoryproject.MainPageController">
+   <children>
+      <Pane prefHeight="701.0" prefWidth="824.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 10px; -fx-background-radius: 7px;">
+         <children>
+            <Pane layoutX="70.0" layoutY="143.0" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
+               <children>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="104.0" prefHeight="61.0" prefWidth="169.0" text="Deterministic Finite Automata" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <Pane layoutX="316.0" layoutY="143.0" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
+               <children>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="104.0" prefHeight="61.0" prefWidth="169.0" text="Non-deterministic Finite Automata" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <Pane layoutX="70.0" layoutY="367.0" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
+               <children>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="104.0" prefHeight="61.0" prefWidth="169.0" text="Push-down Automata" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <Pane layoutX="560.0" layoutY="143.0" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
+               <children>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="104.0" prefHeight="61.0" prefWidth="169.0" text="Context-Free Grammar" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <Pane layoutX="316.0" layoutY="367.0" onMouseClicked="#enterTuringMachine" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
+               <children>
+                  <Label fx:id="turingMachLabel" alignment="CENTER" layoutX="13.0" layoutY="104.0" onMouseClicked="#enterTuringMachine" prefHeight="61.0" prefWidth="169.0" text="Turing Machine" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
