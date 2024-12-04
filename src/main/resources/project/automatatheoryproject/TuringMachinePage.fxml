@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #99daba; -fx-border-color: #008080; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.automatatheoryproject.TuringMachineController">
+<AnchorPane prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #99daba; -fx-border-color: #008080; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TuringMachine.TuringMachineController">
    <children>
       <TextField fx:id="number1Field" layoutX="95.0" layoutY="149.0" prefHeight="25.0" prefWidth="194.0" promptText="Number 1" style="-fx-background-color: #f0ffff; -fx-border-color: #00cccc; -fx-border-radius: 5px;">
          <cursor>
@@ -26,7 +26,7 @@
             <Font name="Franklin Gothic Demi" size="16.0" />
          </font>
       </Button>
-      <TextArea fx:id="transitionLog" editable="false" layoutX="94.0" layoutY="222.0" prefHeight="224.0" prefWidth="513.0" style="-fx-background-color: #f0ffff; -fx-border-color: #00cccc; -fx-border-radius: 5px;">
+      <TextArea fx:id="transitionLogTuringMachine" editable="false" layoutX="94.0" layoutY="222.0" prefHeight="224.0" prefWidth="513.0" style="-fx-background-color: #f0ffff; -fx-border-color: #00cccc; -fx-border-radius: 5px;">
          <font>
             <Font name="Franklin Gothic Demi Cond" size="12.0" />
          </font></TextArea>

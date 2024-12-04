@@ -11,6 +11,7 @@ import java.io.IOException;
 public class MainPageController {
     @FXML
     Label turingMachLabel;
+
     @FXML
     protected void enterTuringMachine() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainPage.class.getResource("TuringMachinePage.fxml"));

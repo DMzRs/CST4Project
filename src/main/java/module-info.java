@@ -5,4 +5,6 @@ module project.automatatheoryproject {
 
     opens project.automatatheoryproject to javafx.fxml;
     exports project.automatatheoryproject;
+    exports TuringMachine;
+    opens TuringMachine to javafx.fxml;
 }
