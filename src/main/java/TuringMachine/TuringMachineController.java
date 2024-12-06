@@ -1,12 +1,16 @@
 package TuringMachine;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import project.automatatheoryproject.StartProgram;
 
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -23,11 +27,15 @@ public class TuringMachineController {
     @FXML
     private Button performButton, additionButton, multiplicationButton, resetButton;
     @FXML
-    private Label resultLabel, operationLabel;
+    private Label resultLabel, operationLabel, transitionLogLabel, transitionDiagramLabel;
+    @FXML
+    private ImageView transitionImage;
+    @FXML
+    private Separator separator;
 
     private int steps;
     private String operation;
-    private String tape;
+
 
 
     public void initialize() {
@@ -48,11 +56,27 @@ public class TuringMachineController {
         resultLabel.setVisible(visibility);
         operationLabel.setVisible(visibility);
         resetButton.setVisible(visibility);
+        transitionLogLabel.setVisible(visibility);
+        transitionDiagramLabel.setVisible(visibility);
+        transitionImage.setVisible(visibility);
+        separator.setVisible(visibility);
     }
 
     private void operationButtonsVisibility(boolean visibility) {
         additionButton.setVisible(visibility);
         multiplicationButton.setVisible(visibility);
+    }
+    @FXML
+    protected void backToMainPage() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("MainPage.fxml"));
+        Scene turingMachine = new Scene(fxmlLoader.load(), 800, 701);
+
+        Stage currentStage = (Stage) resultField.getScene().getWindow();
+        currentStage.setTitle("Turing Machine Page");
+        currentStage.setScene(turingMachine);
+        currentStage.setResizable(false);
+        currentStage.centerOnScreen();
+        currentStage.show();
     }
 
     @FXML
@@ -61,14 +85,16 @@ public class TuringMachineController {
         operation = "+";
         number1Field.setPromptText("Input Binary Number");
         number2Field.setPromptText("Input Binary Number");
+        Image transImage = new Image(getClass().getResource("/Images/BinaryAdditionDiagram.png").toExternalForm());
+        transitionImage.setImage(transImage);
         setMainComponentsVisibility(true);
         operationButtonsVisibility(false);
     }
 
     @FXML
     protected void multiplicationButtonClicked() {
-        operationLabel.setText("*");
-        operation = "*";
+        operationLabel.setText("X");
+        operation = "X";
         number1Field.setPromptText("Input Unary Number");
         number2Field.setPromptText("Input Unary Number");
         setMainComponentsVisibility(true);
@@ -131,7 +157,7 @@ public class TuringMachineController {
             // Process the Turing Machine
             tm.process();
 
-        } else if (operation.equals("*")) {  //operation for unaryMultiplication
+        } else if (operation.equals("X")) {  //operation for unaryMultiplication
 
             String input = number1Field.getText()+"0"+number2Field.getText();
 
@@ -389,7 +415,6 @@ public class TuringMachineController {
                     }else if (currentSymbol == '0') {
                         iterator.set('$');
                         transitionLogTuringMachine.appendText(", Write Symbol: $, Next State: q12");
-                        transitionLogTuringMachine.appendText("\nREACHED FINAL STATE HALTED");
                         state = 12;
                     }
                     break;
@@ -398,6 +423,10 @@ public class TuringMachineController {
             transitionLogTuringMachine.appendText("\nCurrent Tape: ");
             printTape(tape);
             transitionLogTuringMachine.appendText("\nStep: "+steps+"\n");
+
+            if(state==12){
+                transitionLogTuringMachine.appendText("\nHALTED!\nTotal Steps: "+steps+"\n");
+            }
         }
     }
 

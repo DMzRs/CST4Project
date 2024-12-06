@@ -60,7 +60,7 @@
             </Pane>
             <Pane layoutX="316.0" layoutY="367.0" onMouseClicked="#enterTuringMachine" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
                <children>
-                  <Label fx:id="turingMachLabel" alignment="CENTER" layoutX="13.0" layoutY="104.0" onMouseClicked="#enterTuringMachine" prefHeight="61.0" prefWidth="169.0" text="Turing Machine" textAlignment="CENTER" wrapText="true">
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="104.0" prefHeight="61.0" prefWidth="169.0" text="Turing Machine" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="19.0" />
                      </font>
@@ -70,6 +70,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Pane>
+            <Label fx:id="theoryLabel" alignment="CENTER" layoutX="217.0" layoutY="37.0" prefHeight="61.0" prefWidth="393.0" style="-fx-text-fill: #095559;" text="Automata Theory" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Franklin Gothic Heavy" size="40.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

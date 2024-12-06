@@ -14,7 +14,7 @@ public class HomeController {
 
     @FXML
     protected void enterMainPage() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainPage.class.getResource("MainPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("MainPage.fxml"));
         Scene mainPage = new Scene(fxmlLoader.load(), 800, 701);
 
         Stage currentStage = (Stage) automataLabel.getScene().getWindow();
@@ -23,5 +23,10 @@ public class HomeController {
         currentStage.setResizable(false);
         currentStage.centerOnScreen();
         currentStage.show();
+    }
+
+    @FXML
+    protected void exitHomePage() throws IOException {
+        System.exit(0);
     }
 }

@@ -25,7 +25,7 @@
                         <Blend mode="DARKEN" />
                      </effect>
                   </Button>
-                  <Button layoutX="272.0" layoutY="190.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="64.0" text="Exit">
+                  <Button layoutX="272.0" layoutY="190.0" mnemonicParsing="false" onMouseClicked="#exitHomePage" prefHeight="38.0" prefWidth="64.0" text="Exit">
                      <font>
                         <Font name="Franklin Gothic Medium Cond" size="20.0" />
                      </font>

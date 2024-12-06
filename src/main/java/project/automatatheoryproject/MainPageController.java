@@ -10,14 +10,14 @@ import java.io.IOException;
 
 public class MainPageController {
     @FXML
-    Label turingMachLabel;
+    Label theoryLabel;
 
     @FXML
     protected void enterTuringMachine() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainPage.class.getResource("TuringMachinePage.fxml"));
-        Scene turingMachine = new Scene(fxmlLoader.load(), 700, 550);
+        FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("TuringMachinePage.fxml"));
+        Scene turingMachine = new Scene(fxmlLoader.load(), 1200, 800);
 
-        Stage currentStage = (Stage) turingMachLabel.getScene().getWindow();
+        Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
         currentStage.setTitle("Turing Machine Page");
         currentStage.setScene(turingMachine);
         currentStage.setResizable(false);
