@@ -97,6 +97,8 @@ public class TuringMachineController {
         operation = "X";
         number1Field.setPromptText("Input Unary Number");
         number2Field.setPromptText("Input Unary Number");
+        Image transImage = new Image(getClass().getResource("/Images/UnaryMultiplicationDiagram.png").toExternalForm());
+        transitionImage.setImage(transImage);
         setMainComponentsVisibility(true);
         operationButtonsVisibility(false);
     }
@@ -210,211 +212,211 @@ public class TuringMachineController {
             // Transitions
             switch (state) {
                 case 0:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == '0') {
                         iterator.set('0');
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q0");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: R, Next State: q0");
                         state = 0;
                     } else if (currentSymbol == '1') {
                         iterator.set('1');
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q0");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: R, Next State: q0");
                         state = 0;
                     } else if (currentSymbol == '$') {
                         iterator.set('0');
                         iterator.add('$');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q1");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: L, Next State: q1");
                         state = 1;
                     }
                     break;
 
                 case 1:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == '0') {
                         iterator.set('0');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q1");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: L, Next State: q1");
                         state = 1;
                     } else if (currentSymbol == '1') {
                         iterator.set('1');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q1");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: L, Next State: q1");
                         state = 1;
                     } else if (currentSymbol == '$') {
                         iterator.set('$');
-                        transitionLogTuringMachine.appendText(", Write Symbol: $, Next State: q2");
+                        transitionLogTuringMachine.appendText(", Write Symbol: $, Move to: R, Next State: q2");
                         state = 2;
                     }
                     break;
 
                 case 2:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == '1') {
                         iterator.set('X');
-                        transitionLogTuringMachine.appendText(", Write Symbol: X, Next State: q3");
+                        transitionLogTuringMachine.appendText(", Write Symbol: X, Move to: R, Next State: q3");
                         state = 3;
                     } else if (currentSymbol == 'X') {
                         iterator.set('X');
-                        transitionLogTuringMachine.appendText(", Write Symbol: X, Next State: q2");
+                        transitionLogTuringMachine.appendText(", Write Symbol: X, Move to: R, Next State: q2");
                         state = 2;
                     } else if (currentSymbol == '0') {
                         iterator.set('0');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q9");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: L, Next State: q9");
                         state = 9;
                     }
                     break;
 
                 case 3:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == '1') {
                         iterator.set('1');
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q3");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: R, Next State: q3");
                         state = 3;
                     } else if (currentSymbol == '0') {
                         iterator.set('0');
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q4");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: R, Next State: q4");
                         state = 4;
                     }
                     break;
 
                 case 4:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == 'Y') {
                         iterator.set('Y');
-                        transitionLogTuringMachine.appendText(", Write Symbol: Y, Next State: q4");
+                        transitionLogTuringMachine.appendText(", Write Symbol: Y, Move to: R, Next State: q4");
                         state = 4;
                     } else if (currentSymbol == '1') {
                         iterator.set('Y');
-                        transitionLogTuringMachine.appendText(", Write Symbol: Y, Next State: q5");
+                        transitionLogTuringMachine.appendText(", Write Symbol: Y, Move to: R, Next State: q5");
                         state = 5;
                     } else if (currentSymbol == '0') {
                         iterator.set('0');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q8");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: L, Next State: q8");
                         state = 8;
                     }
                     break;
 
                 case 5:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == '1') {
                         iterator.set('1');
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q5");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: R, Next State: q5");
                         state = 5;
                     } else if (currentSymbol == '0') {
                         iterator.set('0');
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q6");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: R, Next State: q6");
                         state = 6;
                     }
                     break;
 
                 case 6:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == '1') {
                         iterator.set('1');
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q6");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: R, Next State: q6");
                         state = 6;
                     } else if (currentSymbol == '$') {
                         iterator.set('1');
                         iterator.add('$');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q7");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: L, Next State: q7");
                         state = 7;
                     }
                     break;
 
                 case 7:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == '0') {
                         iterator.set('0');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q7");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: L, Next State: q7");
                         state = 7;
                     } else if (currentSymbol == '1') {
                         iterator.set('1');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q7");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: L, Next State: q7");
                         state = 7;
                     } else if (currentSymbol == 'Y') {
                         iterator.set('Y');
-                        transitionLogTuringMachine.appendText(", Write Symbol: Y, Next State: q4");
+                        transitionLogTuringMachine.appendText(", Write Symbol: Y, Move to: R, Next State: q4");
                         state = 4;
                     }
                     break;
 
                 case 8:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == 'Y') {
                         iterator.set('1');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q8");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: L, Next State: q8");
                         state = 8;
                     } else if (currentSymbol == '1') {
                         iterator.set('1');
                         iterator.previous();
                         iterator.previous();
+                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Move to: L, Next State: q8");
                         state = 8;
-                        transitionLogTuringMachine.appendText(", Write Symbol: 1, Next State: q8");
-                    } else if(currentSymbol == '0') {
+                    } else if (currentSymbol == '0') {
                         iterator.set('0');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Next State: q8");
+                        transitionLogTuringMachine.appendText(", Write Symbol: 0, Move to: L, Next State: q8");
                         state = 8;
-                    } else if (currentSymbol == 'X'){
+                    } else if (currentSymbol == 'X') {
                         iterator.set('X');
-                        transitionLogTuringMachine.appendText(", Write Symbol: X, Next State: q2");
+                        transitionLogTuringMachine.appendText(", Write Symbol: X, Move to: R, Next State: q2");
                         state = 2;
                     }
                     break;
 
                 case 9:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == 'X') {
                         iterator.set('X');
                         iterator.previous();
                         iterator.previous();
-                        transitionLogTuringMachine.appendText(", Write Symbol: X, Next State: q9");
+                        transitionLogTuringMachine.appendText(", Write Symbol: X, Move to: L, Next State: q9");
                         state = 9;
-                    }else if (currentSymbol == '$'){
+                    } else if (currentSymbol == '$') {
                         iterator.set('$');
-                        transitionLogTuringMachine.appendText(", Write Symbol: $, Next State: q10");
+                        transitionLogTuringMachine.appendText(", Write Symbol: $, Move to: R, Next State: q10");
                         state = 10;
                     }
                     break;
 
                 case 10:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == 'X') {
                         iterator.set('$');
-                        transitionLogTuringMachine.appendText(", Write Symbol: $, Next State: q10");
+                        transitionLogTuringMachine.appendText(", Write Symbol: $, Move to: R, Next State: q10");
                         state = 10;
-                    }else if (currentSymbol == '0') {
+                    } else if (currentSymbol == '0') {
                         iterator.set('$');
-                        transitionLogTuringMachine.appendText(", Write Symbol: $, Next State: q11");
+                        transitionLogTuringMachine.appendText(", Write Symbol: $, Move to: R, Next State: q11");
                         state = 11;
                     }
                     break;
 
                 case 11:
-                    transitionLogTuringMachine.appendText("\nCurrent State: "+ state +", "+"Current Symbol: "+currentSymbol);
+                    transitionLogTuringMachine.appendText("\nCurrent State: " + state + ", Current Symbol: " + currentSymbol);
                     if (currentSymbol == '1') {
                         iterator.set('$');
-                        transitionLogTuringMachine.appendText(", Write Symbol: $, Next State: q11");
+                        transitionLogTuringMachine.appendText(", Write Symbol: $, Move to: R, Next State: q11");
                         state = 11;
                     }else if (currentSymbol == '0') {
                         iterator.set('$');
-                        transitionLogTuringMachine.appendText(", Write Symbol: $, Next State: q12");
+                        transitionLogTuringMachine.appendText(", Write Symbol: $, Move to: R, Next State: q12");
                         state = 12;
                     }
                     break;

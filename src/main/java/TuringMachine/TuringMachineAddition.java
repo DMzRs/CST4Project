@@ -149,7 +149,7 @@ public class TuringMachineAddition {
 
             step++;
 
-            controller.transitionLogTuringMachine.appendText("\n\nStep " + step + " Current State: " + currentState + ", Read Symbol: " + symbol);
+            controller.transitionLogTuringMachine.appendText("\n\nStep: " + step + ", Current State: " + currentState + ", Read Symbol: " + symbol +", Write Symbol: "+ transition.writeSymbol + ", Move to: " + transition.direction + ", Next State: " + transition.nextState);
             controller.transitionLogTuringMachine.appendText("\nTape: ");
             printTapeToOutput();
 
