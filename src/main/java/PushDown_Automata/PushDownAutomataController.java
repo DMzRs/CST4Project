@@ -39,6 +39,7 @@ public class PushDownAutomataController {
         // Log the initial state with the full input
         logTransition(currentState, input, stack.toString());
 
+        currentState = "q1";
         // Process the input string
         for (int i = 0; i < input.length(); i++) {
             char currentChar = input.charAt(i); // Get the character at the current index
@@ -59,7 +60,7 @@ public class PushDownAutomataController {
 
                 stack.pop();
 
-                currentState = "q1"; // Transition to state q1 when we start popping
+                currentState = "q2"; // Transition to state q1 when we start popping
 
 
                 if (i+1==input.length()) {
@@ -83,7 +84,7 @@ public class PushDownAutomataController {
 
         // Once the input string is fully processed, check if the stack is empty and reach final state
         if (stack.isEmpty()) {
-            logTransition("qf", "ε", "[]");
+            logTransition("q3", "ε", "[]");
             return true; // Accepted, stack is empty
         } else {
             // Reject if stack is not empty
