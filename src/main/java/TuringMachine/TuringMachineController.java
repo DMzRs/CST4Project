@@ -36,8 +36,6 @@ public class TuringMachineController {
     private int steps;
     private String operation;
 
-
-
     public void initialize() {
         setMainComponentsVisibility(false);
         operationButtonsVisibility(true);
@@ -66,13 +64,15 @@ public class TuringMachineController {
         additionButton.setVisible(visibility);
         multiplicationButton.setVisible(visibility);
     }
+
+    //to go back to main page
     @FXML
     protected void backToMainPage() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("MainPage.fxml"));
         Scene turingMachine = new Scene(fxmlLoader.load(), 800, 701);
 
         Stage currentStage = (Stage) resultField.getScene().getWindow();
-        currentStage.setTitle("Turing Machine Page");
+        currentStage.setTitle("Main Page");
         currentStage.setScene(turingMachine);
         currentStage.setResizable(false);
         currentStage.centerOnScreen();
@@ -204,7 +204,7 @@ public class TuringMachineController {
 
         while (state != 12) {// halts if reaches q12
             if (!iterator.hasNext()) {
-                break;// avoid moving past the end of the tape
+                break;
             }
 
             currentSymbol = iterator.next();  // to get current symbol at the tape head
