@@ -196,7 +196,7 @@ public class TuringMachineController {
     }
 
     // Method to simulate the Turing machine transitions
-    public void runTuringMachine(LinkedList<Character> tape) {
+    private void runTuringMachine(LinkedList<Character> tape) {
         ListIterator<Character> iterator = tape.listIterator();  // Create an iterator for the tape
         char currentSymbol;
         int state = 0;
@@ -433,7 +433,7 @@ public class TuringMachineController {
     }
 
     //to print tape
-    public void printTape(LinkedList<Character> tape) {
+    private void printTape(LinkedList<Character> tape) {
         ListIterator<Character> iterator = tape.listIterator();
         while (iterator.hasNext()) {
             transitionLogTuringMachine.appendText(String.valueOf(iterator.next()));
@@ -441,7 +441,7 @@ public class TuringMachineController {
     }
 
     //to print to result
-    public void printTapeToResultField(LinkedList<Character> tape) {
+    private void printTapeToResultField(LinkedList<Character> tape) {
         ListIterator<Character> iterator = tape.listIterator();
         while (iterator.hasNext()) {
             char currentChar = iterator.next();

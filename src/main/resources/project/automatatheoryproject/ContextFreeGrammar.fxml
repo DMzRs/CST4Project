@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ContextFreeGrammar.CFG_Controller">
+   <children>
+      <Pane prefHeight="850.0" prefWidth="1000.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 10px; -fx-background-radius: 7px;">
+         <children>
+            <Label alignment="CENTER" layoutX="287.0" layoutY="34.0" prefHeight="61.0" prefWidth="427.0" style="-fx-text-fill: #095559;" text="Context-free Grammar" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Franklin Gothic Heavy" size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="stringLabel" layoutX="248.0" layoutY="281.0" prefHeight="30.0" prefWidth="120.0" style="-fx-text-fill: #004d4d;" text="String input:">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="stringField" layoutX="370.0" layoutY="281.0" prefHeight="30.0" prefWidth="292.0" style="-fx-background-color: #f0ffff; -fx-border-color: #00cccc; -fx-border-radius: 5px;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font name="Franklin Gothic Demi" size="15.0" />
+               </font>
+            </TextField>
+            <Button fx:id="simulateButton" layoutX="673.0" layoutY="282.0" onMouseClicked="#simulateButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Simulate">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Franklin Gothic Demi" size="15.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="transitionLogCFG" editable="false" layoutX="200.0" layoutY="416.0" prefHeight="335.0" prefWidth="600.0" style="-fx-background-color: #f0ffff; -fx-border-color: #00cccc; -fx-border-radius: 5px;">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="14.0" />
+               </font>
+            </TextArea>
+            <Label fx:id="transitionLabel" layoutX="200.0" layoutY="380.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="Transition Log:">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="25.0" />
+               </font>
+            </Label>
+            <Button fx:id="resetButton" layoutX="471.0" layoutY="777.0" onMouseClicked="#resetButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Reset">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Franklin Gothic Demi" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <ImageView fitHeight="59.0" fitWidth="125.0" layoutX="32.0" layoutY="24.0" onMouseClicked="#backToMainPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/backButton.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

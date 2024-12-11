@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PushDown_Automata.PushDownAutomataController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PushDown_Automata.PDA_Controller">
    <children>
       <Pane prefHeight="850.0" prefWidth="1000.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 10px; -fx-background-radius: 7px;">
          <children>
@@ -64,7 +64,7 @@
             </Button>
             <TextArea fx:id="transitionLogPDA" editable="false" layoutX="200.0" layoutY="351.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0ffff; -fx-border-color: #00cccc; -fx-border-radius: 5px;">
                <font>
-                  <Font name="Franklin Gothic Demi Cond" size="14.0" />
+                  <Font name="Franklin Gothic Demi Cond" size="16.0" />
                </font>
             </TextArea>
             <Label fx:id="transitionLabel" layoutX="200.0" layoutY="321.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="Transition Log:">

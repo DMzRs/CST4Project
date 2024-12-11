@@ -10,17 +10,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import project.automatatheoryproject.StartProgram;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Stack;
 
-public class PushDownAutomataController {
+public class PDA_Controller {
 
     private Stack<Character> stack;
 
     private StringBuilder transitionLog;
 
-    public PushDownAutomataController() {
+    public PDA_Controller() {
         this.stack = new Stack<>();
         this.transitionLog = new StringBuilder();
     }
@@ -31,7 +30,7 @@ public class PushDownAutomataController {
     }
 
     // Method for processing the input string with PDA
-    public boolean processString(String inputString, int n) {
+    private boolean processString(String inputString, int n) {
         stack.clear();
         String currentState = "q0";
         String input = inputString;
@@ -39,11 +38,11 @@ public class PushDownAutomataController {
         // Log the initial state with the full input
         logTransition(currentState, input, stack.toString());
 
-        currentState = "q1";
         // Process the input string
         for (int i = 0; i < input.length(); i++) {
             char currentChar = input.charAt(i); // Get the character at the current index
             if (currentChar == 'a') {
+                currentState = "q1";
                 stack.push(currentChar);
                 if (i+1==input.length()) {
                     logTransition(currentState, "ε", stack.toString());
@@ -93,7 +92,7 @@ public class PushDownAutomataController {
     }
 
     //to verify if n input is integer
-    public boolean isInteger(String str) {
+    private boolean isInteger(String str) {
         try {
             Integer.parseInt(str);
             return true;
@@ -124,6 +123,7 @@ public class PushDownAutomataController {
         stringComponents(false);
         transitionComponents(false);
     }
+
     //to set visibility on string input components
     @FXML
     private void stringComponents(boolean Visibility){
@@ -162,7 +162,7 @@ public class PushDownAutomataController {
     //when verify button is clicked
     @FXML
     protected void verifyButtonClicked() {
-        PushDownAutomataController pda = new PushDownAutomataController();
+        PDA_Controller pda = new PDA_Controller();
         String stringInput = stringField.getText();
         if (stringInput.isEmpty()){
             stringErrorLabel.setVisible(true);

@@ -10,4 +10,10 @@ module project.automatatheoryproject {
     opens TuringMachine to javafx.fxml;
     exports PushDown_Automata;
     opens PushDown_Automata to javafx.fxml;
+    exports ContextFreeGrammar;
+    opens ContextFreeGrammar to javafx.fxml;
+    exports DeterministicFiniteAutomata;
+    opens DeterministicFiniteAutomata to javafx.fxml;
+    exports NonDeterministicFiniteAutomata;
+    opens NonDeterministicFiniteAutomata to javafx.fxml;
 }

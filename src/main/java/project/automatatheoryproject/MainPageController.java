@@ -15,11 +15,11 @@ public class MainPageController {
     @FXML
     protected void enterTuringMachine() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("TuringMachinePage.fxml"));
-        Scene turingMachine = new Scene(fxmlLoader.load(), 1200, 800);
+        Scene tm = new Scene(fxmlLoader.load(), 1200, 800);
 
         Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
         currentStage.setTitle("Turing Machine Page");
-        currentStage.setScene(turingMachine);
+        currentStage.setScene(tm);
         currentStage.setResizable(false);
         currentStage.centerOnScreen();
         currentStage.show();
@@ -32,6 +32,18 @@ public class MainPageController {
         Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
         currentStage.setTitle("Push Down Automata Page");
         currentStage.setScene(pda);
+        currentStage.setResizable(false);
+        currentStage.centerOnScreen();
+        currentStage.show();
+    }
+    @FXML
+    protected void enterContextFreeGrammar() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("ContextFreeGrammar.fxml"));
+        Scene cfg = new Scene(fxmlLoader.load(), 1000, 850);
+
+        Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
+        currentStage.setTitle("Context-free Grammar Page");
+        currentStage.setScene(cfg);
         currentStage.setResizable(false);
         currentStage.centerOnScreen();
         currentStage.show();
