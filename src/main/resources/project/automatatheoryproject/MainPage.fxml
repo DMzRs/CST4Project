@@ -75,7 +75,7 @@
                   <Font name="Franklin Gothic Heavy" size="40.0" />
                </font>
             </Label>
-            <Pane layoutX="560.0" layoutY="367.0" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
+            <Pane layoutX="560.0" layoutY="367.0" onMouseClicked="#enterTowerOfHanoi" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
                <children>
                   <Label alignment="CENTER" layoutX="13.0" layoutY="104.0" prefHeight="61.0" prefWidth="169.0" text="Tower of Hanoi" textAlignment="CENTER" wrapText="true">
                      <font>

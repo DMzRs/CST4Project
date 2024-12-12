@@ -48,4 +48,16 @@ public class MainPageController {
         currentStage.centerOnScreen();
         currentStage.show();
     }
+
+    @FXML
+    protected void enterTowerOfHanoi() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("TowerOFHanoiPage.fxml"));
+        Scene toh = new Scene(fxmlLoader.load(), 800, 600);
+        Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
+        currentStage.setTitle("Push Down Automata Page");
+        currentStage.setScene(toh);
+        currentStage.setResizable(false);
+        currentStage.centerOnScreen();
+        currentStage.show();
+    }
 }
