@@ -1,8 +1,7 @@
 module project.automatatheoryproject {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.desktop;
-
+    requires javafx.graphics;
 
     opens project.automatatheoryproject to javafx.fxml;
     exports project.automatatheoryproject;
@@ -16,4 +15,6 @@ module project.automatatheoryproject {
     opens DeterministicFiniteAutomata to javafx.fxml;
     exports NonDeterministicFiniteAutomata;
     opens NonDeterministicFiniteAutomata to javafx.fxml;
+    exports TowerOfHanoi;
+    opens TowerOfHanoi to javafx.fxml;
 }
