@@ -16,4 +16,6 @@ module project.automatatheoryproject {
     opens DeterministicFiniteAutomata to javafx.fxml;
     exports NonDeterministicFiniteAutomata;
     opens NonDeterministicFiniteAutomata to javafx.fxml;
+    exports TowerOfHanoi to javafx.graphics;
+    opens TowerOfHanoi to javafx.fxml;
 }
