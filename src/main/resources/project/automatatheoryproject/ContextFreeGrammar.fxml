@@ -20,12 +20,12 @@
                   <Font name="Franklin Gothic Heavy" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="stringLabel" layoutX="248.0" layoutY="281.0" prefHeight="30.0" prefWidth="120.0" style="-fx-text-fill: #004d4d;" text="String input:">
+            <Label fx:id="stringLabel" layoutX="249.0" layoutY="307.0" prefHeight="30.0" prefWidth="120.0" style="-fx-text-fill: #004d4d;" text="String input:">
                <font>
                   <Font name="Franklin Gothic Demi Cond" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="stringField" layoutX="370.0" layoutY="281.0" prefHeight="30.0" prefWidth="292.0" style="-fx-background-color: #f0ffff; -fx-border-color: #00cccc; -fx-border-radius: 5px;">
+            <TextField fx:id="stringField" layoutX="371.0" layoutY="307.0" prefHeight="30.0" prefWidth="292.0" style="-fx-background-color: #f0ffff; -fx-border-color: #00cccc; -fx-border-radius: 5px;">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -33,7 +33,7 @@
                   <Font name="Franklin Gothic Demi" size="15.0" />
                </font>
             </TextField>
-            <Button fx:id="simulateButton" layoutX="673.0" layoutY="282.0" onMouseClicked="#simulateButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Simulate">
+            <Button fx:id="simulateButton" layoutX="674.0" layoutY="308.0" onMouseClicked="#simulateButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Simulate">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -46,7 +46,7 @@
                   <Font name="Franklin Gothic Demi Cond" size="14.0" />
                </font>
             </TextArea>
-            <Label fx:id="transitionLabel" layoutX="200.0" layoutY="380.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="Transition Log:">
+            <Label fx:id="transitionLabel" layoutX="200.0" layoutY="380.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="Production Steps:">
                <font>
                   <Font name="Franklin Gothic Demi Cond" size="25.0" />
                </font>
@@ -59,6 +59,25 @@
                   <Font name="Franklin Gothic Demi" size="15.0" />
                </font>
             </Button>
+            <Pane layoutX="198.0" layoutY="95.0" prefHeight="167.0" prefWidth="600.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5px; -fx-border-color: #095559; -fx-border-width: 2px; -fx-border-radius: 5px;">
+               <children>
+                  <Label layoutX="86.0" layoutY="14.0" prefHeight="167.0" prefWidth="187.0" style="-fx-text-fill: #095559;" text="G = {V, Σ, R, S} V = {S, a, b, c}  Σ = {a, b}   " wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Demi" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="154.0" prefHeight="49.0" prefWidth="292.0" style="-fx-text-fill: #095559;" text="L={ WcWR|W ε (a+b)* } " wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Demi" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="327.0" layoutY="14.0" prefHeight="167.0" prefWidth="162.0" style="-fx-text-fill: #095559;" text="R = S →aSa , S →bSb  and S → c." wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Demi" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
       <ImageView fitHeight="59.0" fitWidth="125.0" layoutX="32.0" layoutY="24.0" onMouseClicked="#backToMainPage" pickOnBounds="true" preserveRatio="true">

@@ -175,7 +175,7 @@ public class PDA_Controller {
                 transitionLogPDA.appendText("Accepted!");
             } else {
                 transitionLogPDA.appendText(String.valueOf(pda.transitionLog)); // Output transition logs
-                transitionLogPDA.appendText("Rejected!: Stack not empty or input invalid!");
+                transitionLogPDA.appendText("Rejected: Stack not empty or input invalid!");
             }
         }
     }

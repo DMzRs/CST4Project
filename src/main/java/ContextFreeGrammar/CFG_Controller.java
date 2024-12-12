@@ -22,6 +22,8 @@ public class CFG_Controller {
     @FXML
     private Button simulateButton, resetButton;
 
+    private StringBuilder palindrome = new StringBuilder();
+
     //to go back to main page
     @FXML
     protected void backToMainPage() throws IOException {
@@ -38,12 +40,8 @@ public class CFG_Controller {
 
     @FXML
     protected void simulateButtonClicked() {
-        String inputString = stringField.getText();
-        if(isStringValid(inputString)) {
-            transitionLogCFG.appendText("The string input " + inputString + " is accepted by the grammar");
-        } else {
-            transitionLogCFG.appendText("The string input " + inputString + " is not accepted by the grammar");
-        }
+        String inputString = stringField.getText().trim();
+        transitionLogCFG.appendText(performCFG(inputString));
     }
 
     @FXML
@@ -52,40 +50,54 @@ public class CFG_Controller {
         transitionLogCFG.clear();
     }
 
-    //method to verify if string is valid
-    private boolean isStringValid(String UserInput) {
-        return ruleProductions(UserInput);
+    // Method to simulate the production of the palindrome
+    public String performCFG(String w) {
+        if (!isInputInGrammar(w)) {
+            return "Rejected: Only strings of 'a' and 'b' are allowed.";
+        }
+
+        // Constructing the full string based on the input w
+        String constructedString = w + "c" + new StringBuilder(w).reverse().toString();
+
+        // Start the derivation process
+        palindrome.setLength(0);
+        grammarProduction(w);
+
+        String result = palindrome.toString();
+        result += "\nFinal String: " + constructedString;
+        result += "\n\nThe Input is Accepted.";
+
+        return result;
     }
 
-    private boolean ruleProductions(String UserInput) {
-        // Base case: reject if the input is empty
-        if (UserInput.isEmpty()) {
-            return false;
-        }
+    //to palidrome the user input
+    private void grammarProduction(String w) {
+        StringBuilder current = new StringBuilder("S");
+        palindrome.append("Production Rule: S → S").append("\n");
+        palindrome.append(current+"\n");
 
-        // For production rule S → c
-        if (UserInput.length() == 1) {
-            transitionLogCFG.appendText(UserInput + "\nS → c\n");
-            return UserInput.charAt(0) == 'c' || UserInput.charAt(0) == 'C';
-        }
+        StringBuilder leftSide = new StringBuilder();
 
-        // For production rule S → aSa
-        if ((UserInput.charAt(0) == 'a' && UserInput.charAt(UserInput.length() - 1) == 'a') ||
-                (UserInput.charAt(0) == 'A' && UserInput.charAt(UserInput.length() - 1) == 'A')) {
-            transitionLogCFG.appendText(UserInput + "\nS → aSa\n");
-            return ruleProductions(UserInput.substring(1, UserInput.length() - 1));
+        for (char ch : w.toCharArray()) {
+            if (ch == 'a') {
+                current = new StringBuilder(current.toString().replaceFirst("S", "aSa"));
+                leftSide.append("a");
+                palindrome.append("Production Rule: S → aSa\n");
+            } else if (ch == 'b') {
+                current = new StringBuilder(current.toString().replaceFirst("S", "bSb"));
+                palindrome.append("Production Rule: S → bSb\n");
+                leftSide.append("b");
+            }
+            palindrome.append(current).append("\n");
         }
-
-        // For production rule S → bSb
-        if ((UserInput.charAt(0) == 'b' && UserInput.charAt(UserInput.length() - 1) == 'b') ||
-                (UserInput.charAt(0) == 'B' && UserInput.charAt(UserInput.length() - 1) == 'B')) {
-            transitionLogCFG.appendText(UserInput + "\nS → bSb\n");
-            return ruleProductions(UserInput.substring(1, UserInput.length() - 1));
-        }
-
-        // Reject input
-        return false;
+        palindrome.append("Production Rule: S → c\n");
+        String constructedPalindrome = leftSide + "c" + leftSide.reverse();
+        palindrome.append(constructedPalindrome).append("\n");
     }
 
 
+    //method to validate if user inputs are only a and b
+    private boolean isInputInGrammar(String str) {
+        return str.matches("[ab]+");
+    }
 }
