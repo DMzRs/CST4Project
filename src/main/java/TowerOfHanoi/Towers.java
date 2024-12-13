@@ -19,7 +19,7 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Towers extends Application {
+public class Towers {
 
     @FXML
     private Label titleName;
@@ -56,23 +56,6 @@ public class Towers extends Application {
     private double animationSpeed = 1.0; // Default speed for animation
 
 
-
-    @Override
-    public void start(Stage primaryStage) {
-        try {
-            // Load the FXML layout for the Tower of Hanoi game
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/project/automatatheoryproject/TowerOfHanoiPage.fxml"));
-            Scene scene = new Scene(loader.load(), 800, 600);
-
-            // Set up the stage (window)
-            primaryStage.setTitle("Tower of Hanoi");
-            primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     private void initialize(){
@@ -389,9 +372,5 @@ public class Towers extends Application {
             towerPane.getChildren().add(label);
         }
 
-    }
-
-    public static void main(String[] args) {
-        launch(args);  // Launch the JavaFX application
     }
 }

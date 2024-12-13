@@ -33,6 +33,7 @@ public class PDA_Controller {
     private boolean processString(String inputString, int n) {
         stack.clear();
         String currentState = "q0";
+        int aCounter = 0;
         String input = inputString;
 
         // Log the initial state with the full input
@@ -42,6 +43,7 @@ public class PDA_Controller {
         for (int i = 0; i < input.length(); i++) {
             char currentChar = input.charAt(i); // Get the character at the current index
             if (currentChar == 'a') {
+                aCounter++;
                 currentState = "q1";
                 stack.push(currentChar);
                 if (i+1==input.length()) {
@@ -49,6 +51,9 @@ public class PDA_Controller {
                 } else
                     logTransition(currentState, input.substring(i + 1), stack.toString());
             } else if (currentChar == 'b') {
+                if(aCounter != n) {
+                    return false;
+                }
                 if (stack.isEmpty() || stack.peek() != 'a') {
 
                     // Reject if no 'a' to pop from stack
@@ -175,7 +180,7 @@ public class PDA_Controller {
                 transitionLogPDA.appendText("Accepted!");
             } else {
                 transitionLogPDA.appendText(String.valueOf(pda.transitionLog)); // Output transition logs
-                transitionLogPDA.appendText("Rejected: Stack not empty or input invalid!");
+                transitionLogPDA.appendText("Rejected: Stack not empty, number of a's and b's is not equal to n, or input invalid!");
             }
         }
     }
