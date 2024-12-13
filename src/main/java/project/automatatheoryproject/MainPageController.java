@@ -27,7 +27,7 @@ public class MainPageController {
     @FXML
     protected void enterPushDownAutomata() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("PushDownAutomata.fxml"));
-        Scene pda = new Scene(fxmlLoader.load(), 1000, 850);
+        Scene pda = new Scene(fxmlLoader.load(), 1308, 850);
 
         Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
         currentStage.setTitle("Push Down Automata Page");

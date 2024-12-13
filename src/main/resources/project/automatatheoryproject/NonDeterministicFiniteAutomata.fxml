@@ -11,11 +11,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DeterministicFiniteAutomata.DFA_Controller">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NonDeterministicFiniteAutomata.NDFA_Controller">
    <children>
       <Pane prefHeight="850.0" prefWidth="1000.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 10px; -fx-background-radius: 7px;">
          <children>
-            <Label alignment="CENTER" layoutX="237.0" layoutY="25.0" prefHeight="61.0" prefWidth="583.0" style="-fx-text-fill: #095559;" text="Deterministic Finite Automata" textAlignment="CENTER" wrapText="true">
+            <Label alignment="CENTER" layoutX="161.0" layoutY="21.0" prefHeight="61.0" prefWidth="690.0" style="-fx-text-fill: #095559;" text="Non-Deterministic Finite Automata" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Franklin Gothic Heavy" size="40.0" />
                </font>
@@ -56,35 +56,35 @@
             </Button>
             <ImageView fitHeight="506.0" fitWidth="878.0" layoutX="61.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/DFA_Diagram.png" />
+                  <Image url="@../../Images/NDFA_Diagram.png" />
                </image>
             </ImageView>
-            <Circle fx:id="q1Circle" fill="WHITE" layoutX="395.0" layoutY="469.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="q0Circle" fill="WHITE" layoutX="218.0" layoutY="596.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="q2Circle" fill="WHITE" layoutX="535.0" layoutY="675.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="q4Circle" fill="WHITE" layoutX="576.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="q3Circle" fill="WHITE" layoutX="810.0" layoutY="534.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label fx:id="q0" layoutX="202.0" layoutY="581.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q0">
+            <Circle fx:id="q1Circle" fill="WHITE" layoutX="423.0" layoutY="468.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="q0Circle" fill="WHITE" layoutX="228.0" layoutY="469.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="q2Circle" fill="WHITE" layoutX="624.0" layoutY="468.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="q4Circle" fill="WHITE" layoutX="439.0" layoutY="674.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="q3Circle" fill="WHITE" layoutX="827.0" layoutY="468.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="q0" layoutX="214.0" layoutY="454.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q0">
                <font>
                   <Font name="Franklin Gothic Demi Cond" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="q1" layoutX="379.0" layoutY="454.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q1">
+            <Label fx:id="q1" layoutX="407.0" layoutY="453.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q1">
                <font>
                   <Font name="Franklin Gothic Demi Cond" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="q2" layoutX="519.0" layoutY="660.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q2">
+            <Label fx:id="q2" layoutX="608.0" layoutY="453.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q2">
                <font>
                   <Font name="Franklin Gothic Demi Cond" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="q4" layoutX="560.0" layoutY="344.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q4">
+            <Label fx:id="q4" layoutX="423.0" layoutY="659.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q4">
                <font>
                   <Font name="Franklin Gothic Demi Cond" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="q3" layoutX="794.0" layoutY="519.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q3">
+            <Label fx:id="q3" layoutX="811.0" layoutY="453.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q3">
                <font>
                   <Font name="Franklin Gothic Demi Cond" size="25.0" />
                </font>
@@ -110,15 +110,15 @@
                   <Font name="Franklin Gothic Demi" size="15.0" />
                </font>
             </Button>
+            <ImageView fitHeight="59.0" fitWidth="125.0" layoutX="32.0" layoutY="32.0" onMouseClicked="#backToMainPage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/backButton.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </Pane>
-      <ImageView fitHeight="59.0" fitWidth="125.0" layoutX="32.0" layoutY="24.0" onMouseClicked="#backToMainPage" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/backButton.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
    </children>
 </AnchorPane>
