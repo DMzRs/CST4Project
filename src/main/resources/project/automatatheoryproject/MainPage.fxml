@@ -22,7 +22,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Pane>
-            <Pane layoutX="304.0" layoutY="145.0" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
+            <Pane layoutX="304.0" layoutY="145.0" onMouseClicked="#enterNonDeterministicFiniteAutomata" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
                <children>
                   <Label alignment="CENTER" layoutX="13.0" layoutY="104.0" prefHeight="61.0" prefWidth="169.0" text="Non-deterministic Finite Automata" textAlignment="CENTER" wrapText="true">
                      <font>

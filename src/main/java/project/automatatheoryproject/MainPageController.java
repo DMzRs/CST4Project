@@ -64,10 +64,22 @@ public class MainPageController {
     @FXML
     protected void enterDeterministicFiniteAutomata() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("DeterministicFiniteAutomata.fxml"));
-        Scene pda = new Scene(fxmlLoader.load(), 1000, 850);
+        Scene dfa = new Scene(fxmlLoader.load(), 1000, 850);
         Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
-        currentStage.setTitle("Push Down Automata Page");
-        currentStage.setScene(pda);
+        currentStage.setTitle("Deterministic Finite Automata Page");
+        currentStage.setScene(dfa);
+        currentStage.setResizable(false);
+        currentStage.centerOnScreen();
+        currentStage.show();
+    }
+
+    @FXML
+    protected void enterNonDeterministicFiniteAutomata() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("NonDeterministicFiniteAutomata.fxml"));
+        Scene ndfa = new Scene(fxmlLoader.load(), 1000, 850);
+        Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
+        currentStage.setTitle("Non-Deterministic Finite Automata Page");
+        currentStage.setScene(ndfa);
         currentStage.setResizable(false);
         currentStage.centerOnScreen();
         currentStage.show();

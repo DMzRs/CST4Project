@@ -79,8 +79,23 @@ public class NDFA_Controller {
         @FXML
         protected void simulateButtonClicked() {
             String stringInput = stringField.getText();
-            if (stringInput.equals("")) {
+            if (stringInput.isEmpty()) {
                 errorLabel.setText("Please enter a string!");
+            } else if (stringInput.length() == 1 && Character.isLetter(stringInput.charAt(0))) {
+                animateCircle(q0Circle, Color.GREEN, () -> {
+                    // Animate q0Circle to white after 0.5 seconds
+                    new Timeline(new KeyFrame(Duration.seconds(0.2), e -> {
+                        animateCircle(q0Circle, Color.WHITE, () -> {
+                            // Animate nq1Circle to green after another 0.5 seconds
+                            new Timeline(new KeyFrame(Duration.seconds(0.2), e2 -> {
+                                animateCircle(q1Circle, Color.GREEN, () -> {
+                                    // Set the errorLabel text after the final animation
+                                    errorLabel.setText("Letter Accepted");
+                                });
+                            })).play();
+                        });
+                    })).play();
+                });
             } else {
                 simulateButton.setVisible(false);
                 runNDFA(stringInput);
@@ -101,14 +116,12 @@ public class NDFA_Controller {
         private void processNextCharacter(LinkedList<Character> inputQueue, int[] state) {
             if (inputQueue.isEmpty()) {
                 // Final state check after processing all input
-                if (state[0] == 1) {
-                    errorLabel.setText("Letter Accepted");
-                } else if (state[0] == 2) {
+                if (state[0] == 2) {
                     errorLabel.setText("Number Accepted");
-                } else if (state[0] == 4) {
+                } else if (state[0] == 3) {
                     errorLabel.setText("Word Accepted");
                 } else {
-                    errorLabel.setText("Rejected");
+                    errorLabel.setText("String Rejected");
                 }
                 return;
             }
@@ -120,25 +133,12 @@ public class NDFA_Controller {
                         state[0] = 2;
                         animateCircle(q0Circle, Color.WHITE, () -> animateCircle(q2Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                     } else if (Character.isLetter(c)) {
-                        state[0] = 1;
-                        animateCircle(q0Circle, Color.WHITE, () -> animateCircle(q1Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
-                    } else {
-                        errorLabel.setText("Rejected");
-                    }
-                    break;
-
-                case 1:
-                    if (Character.isDigit(c)) {
-                        state[0] = 4;
-                        animateCircle(q1Circle, Color.WHITE, () -> animateCircle(q4Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
-                    } else if (Character.isLetter(c)) {
                         state[0] = 3;
-                        animateCircle(q1Circle, Color.WHITE, () -> animateCircle(q3Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
+                        animateCircle(q0Circle, Color.WHITE, () -> animateCircle(q3Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                     } else {
-                        errorLabel.setText("Rejected");
+                        errorLabel.setText("String Rejected");
                     }
                     break;
-
                 case 2:
                     if (Character.isDigit(c)) {
                         state[0] = 2;
@@ -147,7 +147,7 @@ public class NDFA_Controller {
                         state[0] = 4;
                         animateCircle(q2Circle, Color.WHITE, () -> animateCircle(q4Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                     } else {
-                        errorLabel.setText("Rejected");
+                        errorLabel.setText("String Rejected");
                     }
                     break;
                 case 3:
@@ -158,7 +158,7 @@ public class NDFA_Controller {
                         state[0] = 3;
                         animateCircle(q3Circle, Color.WHITE, () -> animateCircle(q3Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                     } else {
-                        errorLabel.setText("Rejected");
+                        errorLabel.setText("String Rejected");
                     }
                     break;
                 case 4:
@@ -169,12 +169,12 @@ public class NDFA_Controller {
                         state[0] = 4;
                         animateCircle(q4Circle, Color.WHITE, () -> animateCircle(q4Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                     } else {
-                        errorLabel.setText("Rejected");
+                        errorLabel.setText("String Rejected");
                     }
                     break;
 
                 default:
-                    errorLabel.setText("Rejected");
+                    errorLabel.setText("String Rejected");
                     break;
             }
         }

@@ -81,7 +81,7 @@ public class DFA_Controller {
     @FXML
     protected void simulateButtonClicked() {
         String stringInput = stringField.getText();
-        if (stringInput.equals("")) {
+        if (stringInput.isEmpty()) {
             errorLabel.setText("Please enter a string!");
         } else {
             simulateButton.setVisible(false);
@@ -110,7 +110,7 @@ public class DFA_Controller {
             } else if (state[0] == 4) {
                 errorLabel.setText("Word Accepted");
             } else {
-                errorLabel.setText("Rejected");
+                errorLabel.setText("String Rejected");
             }
             return;
         }
@@ -125,7 +125,7 @@ public class DFA_Controller {
                     state[0] = 1;
                     animateCircle(q0Circle, Color.WHITE, () -> animateCircle(q1Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                 } else {
-                    errorLabel.setText("Rejected");
+                    errorLabel.setText("String Rejected");
                 }
                 break;
 
@@ -137,7 +137,7 @@ public class DFA_Controller {
                     state[0] = 4;
                     animateCircle(q1Circle, Color.WHITE, () -> animateCircle(q4Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                 } else {
-                    errorLabel.setText("Rejected");
+                    errorLabel.setText("String Rejected");
                 }
                 break;
 
@@ -149,7 +149,7 @@ public class DFA_Controller {
                     state[0] = 3;
                     animateCircle(q2Circle, Color.WHITE, () -> animateCircle(q3Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                 } else {
-                    errorLabel.setText("Rejected");
+                    errorLabel.setText("String Rejected");
                 }
                 break;
             case 3:
@@ -160,7 +160,7 @@ public class DFA_Controller {
                     state[0] = 3;
                     animateCircle(q3Circle, Color.WHITE, () -> animateCircle(q3Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                 } else {
-                    errorLabel.setText("Rejected");
+                    errorLabel.setText("String Rejected");
                 }
                 break;
             case 4:
@@ -171,12 +171,12 @@ public class DFA_Controller {
                     state[0] = 4;
                     animateCircle(q4Circle, Color.WHITE, () -> animateCircle(q4Circle, Color.GREEN, () -> processNextCharacter(inputQueue, state)));
                 } else {
-                    errorLabel.setText("Rejected");
+                    errorLabel.setText("String Rejected");
                 }
                 break;
 
             default:
-                errorLabel.setText("Rejected");
+                errorLabel.setText("String Rejected");
                 break;
         }
     }
