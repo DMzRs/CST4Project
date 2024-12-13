@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.automatatheoryproject.MainPageController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.automatatheoryproject.MainPageController">
    <children>
       <Pane prefHeight="701.0" prefWidth="824.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 10px; -fx-background-radius: 7px;">
          <children>
-            <Pane layoutX="70.0" layoutY="143.0" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
+            <Pane layoutX="70.0" layoutY="143.0" onMouseClicked="#enterDeterministicFiniteAutomata" prefHeight="173.0" prefWidth="195.0" style="-fx-background-color: #b7fdd1; -fx-border-color: #095559; -fx-border-width: 2px;">
                <children>
                   <Label alignment="CENTER" layoutX="13.0" layoutY="104.0" prefHeight="61.0" prefWidth="169.0" text="Deterministic Finite Automata" textAlignment="CENTER" wrapText="true">
                      <font>

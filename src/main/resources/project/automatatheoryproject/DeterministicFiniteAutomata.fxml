@@ -8,9 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DeterministicFiniteAutomata.DFA_Controller">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DeterministicFiniteAutomata.DFA_Controller">
    <children>
       <Pane prefHeight="850.0" prefWidth="1000.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 10px; -fx-background-radius: 7px;">
          <children>
@@ -40,12 +41,68 @@
                   <Font name="Franklin Gothic Demi" size="15.0" />
                </font>
             </Button>
-            <Label fx:id="transitionLabel" layoutX="224.0" layoutY="249.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="Transition Diagram:">
+            <Label fx:id="transitionLabel" layoutX="61.0" layoutY="225.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="Transition Diagram:">
                <font>
                   <Font name="Franklin Gothic Demi Cond" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="resetButton" layoutX="483.0" layoutY="734.0" onMouseClicked="#resetButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Reset">
+            <Button fx:id="pauseButton" alignment="CENTER" layoutX="471.0" layoutY="778.0" onMouseClicked="#pauseButtonClicked" prefHeight="28.0" prefWidth="70.0" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Pause" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Franklin Gothic Demi" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="506.0" fitWidth="878.0" layoutX="61.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/PDA_Diagram.png" />
+               </image>
+            </ImageView>
+            <Circle fx:id="q1Circle" fill="WHITE" layoutX="395.0" layoutY="469.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="q0Circle" fill="WHITE" layoutX="218.0" layoutY="596.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="q2Circle" fill="WHITE" layoutX="535.0" layoutY="675.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="q4Circle" fill="WHITE" layoutX="576.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="q3Circle" fill="WHITE" layoutX="810.0" layoutY="534.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="q0" layoutX="202.0" layoutY="581.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q0">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="q1" layoutX="379.0" layoutY="454.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q1">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="q2" layoutX="519.0" layoutY="660.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q2">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="q4" layoutX="560.0" layoutY="344.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q4">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="q3" layoutX="794.0" layoutY="519.0" prefHeight="30.0" prefWidth="33.0" style="-fx-text-fill: #004d4d;" text="q3">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="383.0" layoutY="148.0" prefHeight="30.0" prefWidth="292.0" style="-fx-text-fill: #004d4d;" text="Error Message">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="resetButton" layoutX="562.0" layoutY="778.0" onMouseClicked="#resetButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Reset">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Franklin Gothic Demi" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="skipButton" layoutX="401.0" layoutY="778.0" onMouseClicked="#skipButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Skip">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
