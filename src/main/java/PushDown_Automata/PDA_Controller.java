@@ -55,33 +55,22 @@ public class PDA_Controller {
                     return false;
                 }
                 if (stack.isEmpty() || stack.peek() != 'a') {
-
                     // Reject if no 'a' to pop from stack
                     logTransition(currentState, input.substring(i + 1), stack.toString());
-
                     return false;
                 }
 
                 stack.pop();
-
                 currentState = "q2"; // Transition to state q1 when we start popping
 
-
                 if (i+1==input.length()) {
-
                     logTransition(currentState, "ε", stack.toString());
-
                 } else
-
                     logTransition(currentState, input.substring(i + 1), stack.toString());
-
             } else {
-
                 // Reject on invalid character
                 logTransition(currentState, input.substring(i + 1), stack.toString());
-
                 return false;
-
             }
 
         }
