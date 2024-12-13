@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
@@ -110,15 +111,59 @@
                   <Font name="Franklin Gothic Demi" size="15.0" />
                </font>
             </Button>
+            <Button layoutX="62.0" layoutY="778.0" onMouseClicked="#viewInstructionButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="View Instructions">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Franklin Gothic Demi" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="59.0" fitWidth="125.0" layoutX="32.0" layoutY="26.0" onMouseClicked="#backToMainPage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/backButton.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <StackPane fx:id="instructionPane" layoutX="45.0" layoutY="61.0" prefHeight="757.0" prefWidth="910.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 3px;" visible="false">
+               <children>
+                  <Pane prefHeight="751.0" prefWidth="900.0">
+                     <children>
+                        <Button fx:id="closeButton" layoutX="415.0" layoutY="668.0" onMouseClicked="#closeButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Close">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Franklin Gothic Demi" size="20.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="421.0" fitWidth="970.0" layoutX="78.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/DFA_Tuples.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="326.0" layoutY="528.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="How to use" textAlignment="CENTER">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" layoutX="234.0" layoutY="558.0" prefHeight="99.0" prefWidth="437.0" style="-fx-text-fill: #004d4d;" text="Input must only be numbers, letters, or word. Otherwise, it will be rejected." textAlignment="JUSTIFY" wrapText="true">
+                           <font>
+                              <Font name="Franklin Gothic Book" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="435.0" prefHeight="68.0" prefWidth="437.0" style="-fx-text-fill: #004d4d;" text="A DFA that accepts string containing either a word, letter, or number." textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
          </children>
       </Pane>
-      <ImageView fitHeight="59.0" fitWidth="125.0" layoutX="32.0" layoutY="24.0" onMouseClicked="#backToMainPage" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/backButton.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
    </children>
 </AnchorPane>

@@ -89,13 +89,13 @@
             <Font name="Franklin Gothic Demi Cond" size="25.0" />
          </font>
       </Label>
-      <ImageView fx:id="transitionImage" fitHeight="424.0" fitWidth="525.0" layoutX="652.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="transitionImage" fitHeight="424.0" fitWidth="525.0" layoutX="656.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/BinaryAdditionDiagram.png" />
          </image>
       </ImageView>
       <Separator fx:id="separator" layoutX="637.0" layoutY="67.0" orientation="VERTICAL" prefHeight="689.0" prefWidth="1.0" />
-      <Label fx:id="transitionDiagramLabel" layoutX="652.0" layoutY="411.0" style="-fx-text-fill: #004d4d;" text="Transition Diagram:">
+      <Label fx:id="transitionDiagramLabel" layoutX="656.0" layoutY="247.0" style="-fx-text-fill: #004d4d;" text="Transition Diagram:">
          <font>
             <Font name="Franklin Gothic Demi Cond" size="23.0" />
          </font>
@@ -108,5 +108,15 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <Label fx:id="instructionLabel" layoutX="652.0" layoutY="73.0" style="-fx-text-fill: #004d4d;" text="How to use:">
+         <font>
+            <Font name="Franklin Gothic Demi Cond" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="instructionLabel1" alignment="TOP_LEFT" layoutX="688.0" layoutY="106.0" prefHeight="257.0" prefWidth="460.0" style="-fx-text-fill: #004d4d;" text="This TM performs multiplication using unary digits. Thus, input must only contain 1's. Otherwise, it won't perform the operation." textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Franklin Gothic Book" size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

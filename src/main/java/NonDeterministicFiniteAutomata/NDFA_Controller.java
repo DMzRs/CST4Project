@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -28,6 +29,8 @@ public class NDFA_Controller {
     private Label errorLabel;
     @FXML
     private Button simulateButton, resetButton, skipButton, pauseButton;
+    @FXML
+    private StackPane instructionPane;
 
     private Timeline animation;
 
@@ -60,6 +63,7 @@ public class NDFA_Controller {
 
         @FXML
         protected void initialize() {
+            instructionPane.setVisible(true);
             pauseButton.setText("Pause");
             q0Circle.setFill(Color.WHITE);
             q1Circle.setFill(Color.WHITE);
@@ -72,8 +76,26 @@ public class NDFA_Controller {
         }
 
         @FXML
+        protected void closeButtonClicked() {
+            instructionPane.setVisible(false);
+        }
+
+        @FXML
+        protected void viewInstructionButtonClicked() {
+            instructionPane.setVisible(true);
+        }
+
+        @FXML
         protected void resetButtonClicked() {
-            initialize();
+            pauseButton.setText("Pause");
+            q0Circle.setFill(Color.WHITE);
+            q1Circle.setFill(Color.WHITE);
+            q2Circle.setFill(Color.WHITE);
+            q3Circle.setFill(Color.WHITE);
+            q4Circle.setFill(Color.WHITE);
+            stringField.clear();
+            simulateButton.setVisible(true);
+            errorLabel.setText("");
         }
 
         @FXML

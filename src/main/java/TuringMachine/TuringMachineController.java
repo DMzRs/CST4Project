@@ -27,7 +27,7 @@ public class TuringMachineController {
     @FXML
     private Button performButton, additionButton, multiplicationButton, resetButton;
     @FXML
-    private Label resultLabel, operationLabel, transitionLogLabel, transitionDiagramLabel;
+    private Label resultLabel, operationLabel, transitionLogLabel, transitionDiagramLabel, instructionLabel, instructionLabel1;
     @FXML
     private ImageView transitionImage;
     @FXML
@@ -58,6 +58,8 @@ public class TuringMachineController {
         transitionDiagramLabel.setVisible(visibility);
         transitionImage.setVisible(visibility);
         separator.setVisible(visibility);
+        instructionLabel.setVisible(visibility);
+        instructionLabel1.setVisible(visibility);
     }
 
     private void operationButtonsVisibility(boolean visibility) {
@@ -85,6 +87,7 @@ public class TuringMachineController {
         operation = "+";
         number1Field.setPromptText("Input Binary Number");
         number2Field.setPromptText("Input Binary Number");
+        instructionLabel1.setText("This TM performs addition using binary digits. Thus, input must only contain 0's and 1's. Otherwise, it won't perform the operation.");
         Image transImage = new Image(getClass().getResource("/Images/BinaryAdditionDiagram.png").toExternalForm());
         transitionImage.setImage(transImage);
         setMainComponentsVisibility(true);
@@ -97,6 +100,7 @@ public class TuringMachineController {
         operation = "X";
         number1Field.setPromptText("Input Unary Number");
         number2Field.setPromptText("Input Unary Number");
+        instructionLabel1.setText("This TM performs multiplication using unary digits. Thus, input must only contain 1's. Otherwise, it won't perform the operation.");
         Image transImage = new Image(getClass().getResource("/Images/UnaryMultiplicationDiagram.png").toExternalForm());
         transitionImage.setImage(transImage);
         setMainComponentsVisibility(true);
@@ -111,86 +115,76 @@ public class TuringMachineController {
     @FXML
     protected void performButtonClicked() {
         if (operation.equals("+")) {    //Operation or BinaryAddition
-            TuringMachineAddition tm = new TuringMachineAddition(this);
+            transitionLogTuringMachine.clear();
+            String num1 = number1Field.getText().trim();
+            String num2 = number2Field.getText().trim();
+            if(num1.isEmpty()||num2.isEmpty()){
+                transitionLogTuringMachine.appendText("Input is empty!\n");
+            } else if (num1.matches("[01]*")&&num2.matches("[01]*")){
+                TuringMachineAddition tm = new TuringMachineAddition(this);
 
-            // Define the transitions
-            tm.addTransition("q0", '0', "q0", '0', 'R');
-            tm.addTransition("q0", '1', "q0", '1', 'R');
-            tm.addTransition("q0", '+', "q0", '+', 'R');
-            tm.addTransition("q0", '#', "q1", '#', 'L');
+                // Define the transitions
+                tm.addTransition("q0", '0', "q0", '0', 'R');
+                tm.addTransition("q0", '1', "q0", '1', 'R');
+                tm.addTransition("q0", '+', "q0", '+', 'R');
+                tm.addTransition("q0", '#', "q1", '#', 'L');
 
-            tm.addTransition("q1", '0', "q1", '1', 'L');
-            tm.addTransition("q1", '1', "q2", '0', 'L');
-            tm.addTransition("q1", '+', "q4", '#', 'R');
+                tm.addTransition("q1", '0', "q1", '1', 'L');
+                tm.addTransition("q1", '1', "q2", '0', 'L');
+                tm.addTransition("q1", '+', "q4", '#', 'R');
 
-            tm.addTransition("q2", '1', "q2", '1', 'L');
-            tm.addTransition("q2", '0', "q2", '0', 'L');
-            tm.addTransition("q2", '+', "q3", '+', 'L');
+                tm.addTransition("q2", '1', "q2", '1', 'L');
+                tm.addTransition("q2", '0', "q2", '0', 'L');
+                tm.addTransition("q2", '+', "q3", '+', 'L');
 
-            tm.addTransition("q3", '1', "q3", '0', 'L');
-            tm.addTransition("q3", '0', "q0", '1', 'R');
-            tm.addTransition("q3", '#', "q0", '1', 'R');
+                tm.addTransition("q3", '1', "q3", '0', 'L');
+                tm.addTransition("q3", '0', "q0", '1', 'R');
+                tm.addTransition("q3", '#', "q0", '1', 'R');
 
-            tm.addTransition("q4", '1', "q4", '#', 'R');
-            tm.addTransition("q4", '#', "q5", '#', 'H');
-
-
-            String input = number1Field.getText()+"+"+number2Field.getText();
-
-            // Validate input
-            if (input.contains("#")) {
-                transitionLogTuringMachine.appendText("\nInvalid symbol found. Rejecting.");
-                return;
-            }
-
-            long plusCount = input.chars().filter(ch -> ch == '+').count();
-            if (plusCount != 1) {
-                transitionLogTuringMachine.appendText("\nInvalid input: must contain exactly one '+'.");
-                return;
-            }
+                tm.addTransition("q4", '1', "q4", '#', 'R');
+                tm.addTransition("q4", '#', "q5", '#', 'H');
 
 
-            for (char ch : input.toCharArray()) {
-                tm.tape.addCell(ch);
-            }
+                String input = number1Field.getText() + "+" + number2Field.getText();
 
-            tm.tape.head = tm.tape.first.next;
+                for (char ch : input.toCharArray()) {
+                    tm.tape.addCell(ch);
+                }
+                tm.tape.head = tm.tape.first.next;
 
-            // Process the Turing Machine
-            tm.process();
-
-        } else if (operation.equals("X")) {  //operation for unaryMultiplication
-
-            String input = number1Field.getText()+"0"+number2Field.getText();
-
-            long zeroCount = input.chars().filter(ch -> ch == '0').count();
-
-            //to check if there is more than 1 input '0'
-            if (zeroCount != 1) {
-                transitionLogTuringMachine.appendText("Invalid input: must contain exactly one '0'");
+                // Process the Turing Machine
+                tm.process();
+                performButton.setVisible(false);
             } else {
+                transitionLogTuringMachine.appendText("Input must only contain 0's and 1's!\n");
+            }
+        } else if (operation.equals("X")) {  //operation for unaryMultiplication
+            transitionLogTuringMachine.clear();
+            String num1 = number1Field.getText().trim();
+            String num2 = number2Field.getText().trim();
+            if(num1.isEmpty()||num2.isEmpty()) {
+                transitionLogTuringMachine.appendText("Input is empty!\n");
+            } else if (num1.matches("[1]*")&&num2.matches("[1]*")) {
+                String input = number1Field.getText() + "0" + number2Field.getText();
+                    LinkedList<Character> tape = new LinkedList<>();
 
-                if (!input.contains("0") || !input.contains("1")) {
-                    transitionLogTuringMachine.appendText("Invalid Input :must only contain 1s and 0s");
-                    return;
-                }
+                    // Populate the tape with input string
+                    for (char c : input.toCharArray()) {
+                        tape.add(c);
+                    }
 
-                LinkedList<Character> tape = new LinkedList<>();
+                    // Add '$' at the beginning and end of the tape
+                    tape.addFirst('$');
+                    tape.addLast('$');
 
-                // Populate the tape with input string
-                for (char c : input.toCharArray()) {
-                    tape.add(c);
-                }
+                    // Run the Turing machine transitions
+                    runTuringMachine(tape);
 
-                // Add '$' at the beginning and end of the tape
-                tape.addFirst('$');
-                tape.addLast('$');
-
-                // Run the Turing machine transitions
-                runTuringMachine(tape);
-
-                // Output the result
-                printTapeToResultField(tape);
+                    // Output the result
+                    printTapeToResultField(tape);
+                    performButton.setVisible(false);
+            } else {
+                transitionLogTuringMachine.appendText("Input must only contain 1's!\n");
             }
         }
     }

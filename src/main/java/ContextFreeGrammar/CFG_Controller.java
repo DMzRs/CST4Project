@@ -23,6 +23,12 @@ public class CFG_Controller {
     private Button simulateButton, resetButton;
 
     private StringBuilder palindrome = new StringBuilder();
+    @FXML
+    private void initialize() {
+        stringField.clear();
+        transitionLogCFG.clear();
+        simulateButton.setVisible(true);
+    }
 
     //to go back to main page
     @FXML
@@ -41,19 +47,19 @@ public class CFG_Controller {
     @FXML
     protected void simulateButtonClicked() {
         String inputString = stringField.getText().trim();
+        simulateButton.setVisible(false);
         transitionLogCFG.appendText(performCFG(inputString));
     }
 
     @FXML
     protected void resetButtonClicked() {
-        stringField.clear();
-        transitionLogCFG.clear();
+        initialize();
     }
 
     // Method to simulate the production of the palindrome
     public String performCFG(String w) {
         if (!isInputInGrammar(w)) {
-            return "Rejected: Only strings of 'a' and 'b' are allowed.";
+            return "Rejected: Input must only contain a's and b's!.";
         }
 
         // Constructing the full string based on the input w

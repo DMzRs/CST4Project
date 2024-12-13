@@ -59,21 +59,31 @@
                   <Font name="Franklin Gothic Demi" size="15.0" />
                </font>
             </Button>
-            <Pane layoutX="198.0" layoutY="95.0" prefHeight="167.0" prefWidth="600.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5px; -fx-border-color: #095559; -fx-border-width: 2px; -fx-border-radius: 5px;">
+            <Pane layoutX="25.0" layoutY="95.0" prefHeight="167.0" prefWidth="950.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5px; -fx-border-color: #095559; -fx-border-width: 2px; -fx-border-radius: 5px;">
                <children>
-                  <Label layoutX="86.0" layoutY="14.0" prefHeight="167.0" prefWidth="187.0" style="-fx-text-fill: #095559;" text="G = {V, Σ, R, S} V = {S, a, b, c}  Σ = {a, b}   " wrapText="true">
+                  <Label layoutX="54.0" layoutY="14.0" prefHeight="167.0" prefWidth="187.0" style="-fx-text-fill: #095559;" text="G = {V, Σ, R, S} V = {S, a, b, c}  Σ = {a, b}   " wrapText="true">
                      <font>
                         <Font name="Franklin Gothic Demi" size="27.0" />
                      </font>
                   </Label>
-                  <Label layoutX="154.0" prefHeight="49.0" prefWidth="292.0" style="-fx-text-fill: #095559;" text="L={ WcWR|W ε (a+b)* } " wrapText="true">
+                  <Label layoutX="122.0" prefHeight="49.0" prefWidth="292.0" style="-fx-text-fill: #095559;" text="L={ WcWR|W ε (a+b)* } " wrapText="true">
                      <font>
                         <Font name="Franklin Gothic Demi" size="27.0" />
                      </font>
                   </Label>
-                  <Label layoutX="327.0" layoutY="14.0" prefHeight="167.0" prefWidth="162.0" style="-fx-text-fill: #095559;" text="R = S →aSa , S →bSb  and S → c." wrapText="true">
+                  <Label layoutX="295.0" layoutY="14.0" prefHeight="167.0" prefWidth="162.0" style="-fx-text-fill: #095559;" text="R = S →aSa , S →bSb  and S → c." wrapText="true">
                      <font>
                         <Font name="Franklin Gothic Demi" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="546.0" prefHeight="49.0" prefWidth="292.0" style="-fx-text-fill: #095559;" text="How to use" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Demi" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="514.0" layoutY="30.0" prefHeight="108.0" prefWidth="356.0" style="-fx-text-fill: #095559;" text="This CFG follows the production rule given in the langauge. String input must only contain a's and b's. Otherwise, the string will be rejected." textAlignment="JUSTIFY" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="21.0" />
                      </font>
                   </Label>
                </children>

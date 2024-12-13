@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 22px;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PushDown_Automata.PDA_Controller">
@@ -92,16 +93,60 @@
                </font>
             </Label>
             <Separator layoutX="698.0" layoutY="101.0" orientation="VERTICAL" prefHeight="714.0" prefWidth="0.0" />
-            <ImageView fitHeight="319.0" fitWidth="600.0" layoutX="715.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="319.0" fitWidth="600.0" layoutX="715.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/PDA_Diagram.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="274.0" fitWidth="567.0" layoutX="715.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="274.0" fitWidth="567.0" layoutX="715.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/PDA_Tuples.png" />
                </image>
             </ImageView>
+            <Button layoutX="932.0" layoutY="777.0" onMouseClicked="#viewInstructionButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="View Instructions">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Franklin Gothic Demi" size="15.0" />
+               </font>
+            </Button>
+            <StackPane fx:id="instructionPane" layoutX="341.0" layoutY="164.0" prefHeight="491.0" prefWidth="626.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 3px;">
+               <children>
+                  <Pane prefHeight="751.0" prefWidth="900.0">
+                     <children>
+                        <Button fx:id="closeButton" layoutX="273.0" layoutY="410.0" onMouseClicked="#closeButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Close">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Franklin Gothic Demi" size="20.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="184.0" layoutY="168.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="How to use" textAlignment="CENTER">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="204.0" prefHeight="99.0" prefWidth="437.0" style="-fx-text-fill: #004d4d;" text="In input n, it should always be an integer and must be greater or equal to 1. " textAlignment="JUSTIFY" wrapText="true">
+                           <font>
+                              <Font name="Franklin Gothic Book" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="42.0" prefHeight="68.0" prefWidth="437.0" style="-fx-text-fill: #004d4d;" text="A PDA that accepts specific number of a's and b's strings equals to n. Where n &gt;= 1." textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="292.0" prefHeight="99.0" prefWidth="437.0" style="-fx-text-fill: #004d4d;" text="In the string input, it must only contain a's and b's. Otherwise, it will be rejected or return an error." textAlignment="JUSTIFY" wrapText="true">
+                           <font>
+                              <Font name="Franklin Gothic Book" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
          </children>
       </Pane>
       <ImageView fitHeight="59.0" fitWidth="125.0" layoutX="32.0" layoutY="24.0" onMouseClicked="#backToMainPage" pickOnBounds="true" preserveRatio="true">

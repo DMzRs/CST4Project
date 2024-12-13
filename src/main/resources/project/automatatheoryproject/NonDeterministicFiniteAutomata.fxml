@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
@@ -118,6 +119,55 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <Button layoutX="61.0" layoutY="778.0" onMouseClicked="#viewInstructionButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="View Instructions">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Franklin Gothic Demi" size="15.0" />
+               </font>
+            </Button>
+            <StackPane fx:id="instructionPane" layoutX="51.0" layoutY="76.0" prefHeight="757.0" prefWidth="910.0" style="-fx-background-color: #99daba; -fx-border-color: #095559; -fx-border-width: 3px;">
+               <children>
+                  <Pane prefHeight="751.0" prefWidth="900.0">
+                     <children>
+                        <Button fx:id="closeButton" layoutX="415.0" layoutY="668.0" onMouseClicked="#closeButtonClicked" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-border-radius: 5px;" text="Close">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Franklin Gothic Demi" size="20.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="246.0" fitWidth="427.0" layoutX="14.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/NDFA_Tuple1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="262.0" fitWidth="427.0" layoutX="465.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/NDFA_Tuple2.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="327.0" layoutY="391.0" prefHeight="30.0" prefWidth="252.0" style="-fx-text-fill: #004d4d;" text="How to use" textAlignment="CENTER">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" layoutX="235.0" layoutY="433.0" prefHeight="201.0" prefWidth="437.0" style="-fx-text-fill: #004d4d;" text="Input must only be numbers, letters, or word. Otherwise, it will be rejected." textAlignment="JUSTIFY" wrapText="true">
+                           <font>
+                              <Font name="Franklin Gothic Book" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="281.0" prefHeight="68.0" prefWidth="437.0" style="-fx-text-fill: #004d4d;" text="A NDFA that accepts string containing either a word, letter, or number." textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
          </children>
       </Pane>
    </children>

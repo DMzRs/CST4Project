@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import project.automatatheoryproject.StartProgram;
 
@@ -30,7 +31,7 @@ public class PDA_Controller {
     }
 
     // Method for processing the input string with PDA
-    private boolean processString(String inputString, int n) {
+    private String processString(String inputString, int n) {
         stack.clear();
         String currentState = "q0";
         int aCounter = 0;
@@ -52,12 +53,12 @@ public class PDA_Controller {
                     logTransition(currentState, input.substring(i + 1), stack.toString());
             } else if (currentChar == 'b') {
                 if(aCounter != n) {
-                    return false;
+                    return "a's or b's did is not equal to n";
                 }
                 if (stack.isEmpty() || stack.peek() != 'a') {
                     // Reject if no 'a' to pop from stack
                     logTransition(currentState, input.substring(i + 1), stack.toString());
-                    return false;
+                    return "Rejected: Number of b's is greater than n!";
                 }
 
                 stack.pop();
@@ -69,8 +70,7 @@ public class PDA_Controller {
                     logTransition(currentState, input.substring(i + 1), stack.toString());
             } else {
                 // Reject on invalid character
-                logTransition(currentState, input.substring(i + 1), stack.toString());
-                return false;
+                return "Rejected: Invalid Input!";
             }
 
         }
@@ -78,10 +78,10 @@ public class PDA_Controller {
         // Once the input string is fully processed, check if the stack is empty and reach final state
         if (stack.isEmpty()) {
             logTransition("q3", "ε", "[]");
-            return true; // Accepted, stack is empty
+            return "String Accepted!"; // Accepted, stack is empty
         } else {
             // Reject if stack is not empty
-            return false;
+            return "Rejected: Stack not empty!";
         }
     }
 
@@ -105,17 +105,31 @@ public class PDA_Controller {
     private Button enterButton, verifyButton;
     @FXML
     private TextArea transitionLogPDA;
+    @FXML
+    private StackPane instructionPane;
 
     @FXML
     private void initialize() {
         nErrorLabel.setVisible(false);
+        enterButton.setVisible(true);
         stringErrorLabel.setVisible(false);
         nField.clear();
         stringField.clear();
         transitionLogPDA.clear();
         nField.setPromptText("n >= 1");
+        instructionPane.setVisible(true);
         stringComponents(false);
         transitionComponents(false);
+    }
+
+    @FXML
+    protected void closeButtonClicked() {
+        instructionPane.setVisible(false);
+    }
+
+    @FXML
+    protected void viewInstructionButtonClicked() {
+        instructionPane.setVisible(true);
     }
 
     //to set visibility on string input components
@@ -144,6 +158,7 @@ public class PDA_Controller {
     } else if (isInteger(inputN)) {
         Integer n = Integer.parseInt(inputN);
         if(n>=1) {
+            enterButton.setVisible(false);
             nErrorLabel.setVisible(false);
             stringComponents(true);
         } else{
@@ -164,20 +179,25 @@ public class PDA_Controller {
         } else {
             stringErrorLabel.setVisible(false);
             transitionComponents(true);
-            if(pda.processString(stringInput, Integer.parseInt(nField.getText()))) {
+            verifyButton.setVisible(false);
+                String output = pda.processString(stringInput, Integer.parseInt(nField.getText()));
                 transitionLogPDA.appendText(String.valueOf(pda.transitionLog)); // Output transition logs
-                transitionLogPDA.appendText("Accepted!");
-            } else {
-                transitionLogPDA.appendText(String.valueOf(pda.transitionLog)); // Output transition logs
-                transitionLogPDA.appendText("Rejected: Stack not empty, number of a's and b's is not equal to n, or input invalid!");
-            }
+                transitionLogPDA.appendText(output);
         }
     }
 
     //reset everything in PDA page
     @FXML
     protected void resetButtonClicked(){
-        initialize();
+        nErrorLabel.setVisible(false);
+        enterButton.setVisible(true);
+        stringErrorLabel.setVisible(false);
+        nField.clear();
+        stringField.clear();
+        transitionLogPDA.clear();
+        nField.setPromptText("n >= 1");
+        stringComponents(false);
+        transitionComponents(false);
     }
 
     //to go back to main page
