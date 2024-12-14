@@ -54,7 +54,7 @@ public class MainPageController {
         FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("TowerOFHanoiPage.fxml"));
         Scene toh = new Scene(fxmlLoader.load(), 800, 600);
         Stage currentStage = (Stage) theoryLabel.getScene().getWindow();
-        currentStage.setTitle("Push Down Automata Page");
+        currentStage.setTitle("Tower Of Hanoi Page");
         currentStage.setScene(toh);
         currentStage.setResizable(false);
         currentStage.centerOnScreen();
