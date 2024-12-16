@@ -61,7 +61,7 @@
             </Button>
             <Pane layoutX="25.0" layoutY="95.0" prefHeight="167.0" prefWidth="950.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 5px; -fx-border-color: #095559; -fx-border-width: 2px; -fx-border-radius: 5px;">
                <children>
-                  <Label layoutX="54.0" layoutY="14.0" prefHeight="167.0" prefWidth="187.0" style="-fx-text-fill: #095559;" text="G = {V, Σ, R, S} V = {S, a, b, c}  Σ = {a, b}   " wrapText="true">
+                  <Label layoutX="54.0" layoutY="14.0" prefHeight="167.0" prefWidth="187.0" style="-fx-text-fill: #095559;" text="G = {V, Σ, R, S} V = {S}                Σ = {a, b, c}   " wrapText="true">
                      <font>
                         <Font name="Franklin Gothic Demi" size="27.0" />
                      </font>
