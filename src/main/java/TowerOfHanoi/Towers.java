@@ -3,10 +3,8 @@ package TowerOfHanoi;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -15,14 +13,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Stack;
 
 public class Towers {
-
-    @FXML
-    private Label titleName;
 
     @FXML
     private Pane towerPane;
@@ -41,20 +36,18 @@ public class Towers {
 
     private boolean isAnimationRunning = false;
     private TextArea movesArea;
-    private static final int BASE_Y = 400; // Base Y-coordinate for disks
-    private static final int DISK_HEIGHT = 18; // Height of each disk
-    private static final int DISK_BASE_WIDTH = 100; // Base width of the largest disk
-    private static final int TOWER_WIDTH = 10; // Width of each tower
-    private static final int SPACE_BETWEEN_TOWERS = 190; // Spacing between towers
-    private static final int OFFSET_X = 150; // Horizontal offset for tower alignment
-    private static final int BOTTOM_Y = 200; // Y-coordinate for the bottom of the towers (above the VBox)
-
+    private static final int BASE_Y = 400;
+    private static final int DISK_HEIGHT = 18;
+    private static final int DISK_BASE_WIDTH = 100;
+    private static final int TOWER_WIDTH = 10;
+    private static final int SPACE_BETWEEN_TOWERS = 190;
+    private static final int BOTTOM_Y = 200;
     private Stack<Rectangle>[] towers = new Stack[3]; // Array of stacks representing the towers
     private int numOfDisks = 3; // Default number of disks
     private ArrayList<int[]> moveList = new ArrayList<>(); // Stores the sequence of moves
-    private Timeline animation; // Animation for the tower movements
-    private double animationSpeed = 1.0; // Default speed for animation
-
+    private Timeline animation;
+    private double animationSpeed = 1.0;
+    private Random random = new Random(42);
 
 
     @FXML
@@ -64,32 +57,28 @@ public class Towers {
             towers[i] = new Stack<>();
         }
 
-        // Set up the game with the default state
         resetGame();
-
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(3, 12, 3);
-        diskSpinner.setValueFactory(valueFactory);  // Set the spinner value factory with the correct range
+        diskSpinner.setValueFactory(valueFactory);
     }
 
     @FXML
     private void handleRun() {
-        // Check if the disks are already in the final state (all disks on Tower C)
         if (towers[0].isEmpty() && towers[1].isEmpty() && towers[2].size() == numOfDisks) {
             process.appendText("Can't run animation since it has already reached the final state.\n");
-            return; // Prevent further execution
+            return;
         }
 
-        // Prevent running the animation if it is already running
         if (isAnimationRunning) {
             process.appendText("Animation is already running...\n");
-            return; // Prevent duplicate execution
+            return;
         }
 
         process.appendText("Starting simulation...\n");
         isAnimationRunning = true;
 
         moveList.clear();
-        movesCountLabel.setText("0"); // Reset moves count
+        movesCountLabel.setText("0");
         numOfDisks = diskSpinner.getValue(); // Use the number of disks selected by the user
         solveHanoi(numOfDisks, 0, 2, 1);
         playAnimation();
@@ -100,11 +89,11 @@ public class Towers {
         if (animation != null && animation.getStatus() == Animation.Status.RUNNING) {
             process.appendText("Pausing animation...\n");
             animation.pause();
-            isAnimationRunning = false; // Allow "Run" to be accessible
+            isAnimationRunning = false;
         } else if (animation != null && animation.getStatus() == Animation.Status.PAUSED) {
             process.appendText("Resuming animation...\n");
             animation.play();
-            isAnimationRunning = true; // Prevent "Run" while resuming
+            isAnimationRunning = true;
         } else {
             process.appendText("No animation to pause or resume.\n");
         }
@@ -112,21 +101,16 @@ public class Towers {
 
     @FXML
     private void handleShowMoves() {
-        // Ensure that movesArea is initialized before use
         if (movesArea == null) {
             movesArea = new TextArea();
             movesArea.setEditable(false);
             movesArea.setWrapText(true);
-
-            // Set the preferred height for the TextArea
-            movesArea.setPrefHeight(300); // Adjust height as needed
+            movesArea.setPrefHeight(300);
         }
 
         if (moveList.isEmpty()) {
-            // If no moves have been calculated, show a message
             movesArea.setText("No moves to display. Please click 'Run' to calculate the moves.");
         } else {
-            // Populate TextArea with moves
             StringBuilder moves = new StringBuilder();
             for (int i = 0; i < moveList.size(); i++) {
                 int[] move = moveList.get(i);
@@ -136,22 +120,17 @@ public class Towers {
             movesArea.setText(moves.toString());
         }
 
-        // Create a new Stage (window) to display the moves
+        // Create new window to display the moves
         Stage movesStage = new Stage();
         movesStage.setTitle("Transition Moves");
 
-        // Create a VBox layout for the moves display
         VBox layout = new VBox(10);
         layout.setStyle("-fx-padding: 15; -fx-background-color: #f9f9f9;");
-
-        // Add a Label
         Label titleLabel = new Label("List of Moves:");
         titleLabel.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
 
-        // Add the TextArea directly to the layout
         layout.getChildren().addAll(titleLabel, movesArea);
 
-        // Set the scene for the new stage
         Scene scene = new Scene(layout, 400, 400);
         movesStage.setScene(scene);
         movesStage.show();
@@ -171,14 +150,14 @@ public class Towers {
 
     @FXML
     private void handleSlow() {
-        animationSpeed = 2.0; // Slow speed
-        if (animation != null) animation.setRate(0.5); // Adjust animation rate dynamically
+        animationSpeed = 2.0;
+        if (animation != null) animation.setRate(0.5);
     }
 
     @FXML
     private void handleFast() {
-        animationSpeed = 0.5; // Fast speed
-        if (animation != null) animation.setRate(2.0); // Adjust animation rate dynamically
+        animationSpeed = 0.5;
+        if (animation != null) animation.setRate(2.0);
     }
 
     @FXML
@@ -188,94 +167,81 @@ public class Towers {
             return;
         }
 
-        // Stop the animation if it is currently running
         if (animation != null) {
-            animation.stop(); // Stop any ongoing animation
-            isAnimationRunning = false; // Reset the animation state
+            animation.stop();
+            isAnimationRunning = false;
         }
 
-        // Check if the final state has already been reached (i.e., all disks are on Tower C)
         if (towers[0].isEmpty() && towers[1].isEmpty()) {
             process.appendText("Can't run animation since it has already reached the final state.\n");
             return;
         }
 
-        // Clear the remaining disks from Tower A and Tower B and remove them from the display
+        // Clear the remaining disks from Tower A and Tower B
         while (!towers[0].isEmpty()) {
             Rectangle disk = towers[0].pop();
-            towerPane.getChildren().remove(disk); // Remove the disk from the pane
+            towerPane.getChildren().remove(disk);
         }
         while (!towers[1].isEmpty()) {
             Rectangle disk = towers[1].pop();
-            towerPane.getChildren().remove(disk); // Remove the disk from the pane
+            towerPane.getChildren().remove(disk);
         }
 
-        // Remove all disks from Tower C before placing them in the correct order
+        // Remove all disks from Tower C
         while (!towers[2].isEmpty()) {
             Rectangle disk = towers[2].pop();
-            towerPane.getChildren().remove(disk); // Remove the disk from the pane
+            towerPane.getChildren().remove(disk);
         }
 
-        // Move all disks to Tower C in the correct order (smallest on top, largest at the bottom)
+        random = new Random(42);
         for (int i = numOfDisks; i > 0; i--) {
             double diskWidth = DISK_BASE_WIDTH * (i / (double) numOfDisks);
             diskWidth = Math.max(diskWidth, 11);
 
-            // Create a disk and place it on Tower C
             double centerX = getTowerXPosition(2) + TOWER_WIDTH / 2 - diskWidth / 2;
             double yPosition = BASE_Y - DISK_HEIGHT * (numOfDisks - i + 1);
 
             Rectangle disk = new Rectangle(centerX, yPosition, diskWidth, DISK_HEIGHT);
-            disk.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+            disk.setFill(Color.color(random.nextDouble(), random.nextDouble(), random.nextDouble()));
 
-            // Place the disk on Tower C
             towers[2].push(disk);
             towerPane.getChildren().add(disk);
         }
-
-        // Print a message indicating the simulation has been skipped
         process.appendText("Simulation skipped. All disks are now on Tower C in correct order.\n");
-
-        // Clear the moveList to indicate no further moves
-        isAnimationRunning = false;  // Ensure the animation state is reset
+        isAnimationRunning = false;
         runButton.setDisable(true);
     }
 
 
     private void playAnimation() {
         if (animation != null) {
-            animation.stop(); // Stop any previous animation
+            animation.stop();
         }
 
-        // Reset the previous animation
         animation = new Timeline();
-        animation.setCycleCount(1);  // Play the animation once
-        animation.getKeyFrames().clear(); // Clear any old keyframes
+        animation.setCycleCount(1);
+        animation.getKeyFrames().clear();
 
-        // Calculate the total time for the entire animation based on the number of moves
-        double totalDuration = animationSpeed * moveList.size();  // Adjust animation speed here if needed
+        double totalDuration = animationSpeed * moveList.size();
 
-        // Create new keyframes for each move with adjusted animation speed
         for (int i = 0; i < moveList.size(); i++) {
             final int moveIndex = i;
-            // Calculate a time-based offset to spread the animation evenly across the moves
             double offsetTime = totalDuration * (moveIndex / (double) moveList.size());
 
             animation.getKeyFrames().add(new KeyFrame(Duration.seconds(offsetTime), event -> {
                 if (!moveList.isEmpty() && moveIndex < moveList.size()) {
                     int[] move = moveList.get(moveIndex);
-                    moveDisk(move[0], move[1]);  // Correctly animate each disk move
+                    moveDisk(move[0], move[1]);
                 }
             }));
         }
 
-        // Handle when animation finishes
         animation.setOnFinished(event -> {
             process.appendText("Simulation completed.\n");
-            isAnimationRunning = false; // Reset running state
+            isAnimationRunning = false;
         });
 
-        animation.play();  // Start the animation
+        animation.play();
     }
 
 
@@ -310,7 +276,6 @@ public class Towers {
 
             // Check if this is the last move and stop the animation
             if (towers[to].size() == numOfDisks && from == 0 && to == 2) {
-                // All disks have reached the goal tower
                 process.appendText("Simulation completed.\n");
                 isAnimationRunning = false;
                 animation.stop();
@@ -319,13 +284,13 @@ public class Towers {
     }
 
     private int getTowerXPosition(int towerIndex) {
-        // Calculate the X position based on the number of towers and the spacing
+        // Calculate the X position based on the number of towers
         return 210 + towerIndex * SPACE_BETWEEN_TOWERS;
     }
 
     private void resetGame() {
-        towerPane.getChildren().clear();  // Clear all graphical elements
-        moveList.clear();  // Clear the move sequence
+        towerPane.getChildren().clear();
+        moveList.clear();
 
         if (movesArea != null) movesArea.clear();
         movesCountLabel.setText("0");
@@ -338,7 +303,7 @@ public class Towers {
         }
         isAnimationRunning = false;
 
-        // Initialize towers
+        // Initialize
         for (int i = 0; i < 3; i++) {
             int centerX = getTowerXPosition(i);
             Rectangle pole = new Rectangle(centerX, BOTTOM_Y, TOWER_WIDTH, 600);
@@ -348,6 +313,7 @@ public class Towers {
         }
 
         // Add disks to Tower 1
+        random = new Random(42);
         for (int i = numOfDisks; i > 0; i--) {
             double diskWidth = DISK_BASE_WIDTH * (i / (double) numOfDisks);
             diskWidth = Math.max(diskWidth, 11);
@@ -356,7 +322,7 @@ public class Towers {
             double yPosition = BASE_Y - DISK_HEIGHT * (numOfDisks - i + 1);
 
             Rectangle disk = new Rectangle(centerX, yPosition, diskWidth, DISK_HEIGHT);
-            disk.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+            disk.setFill(Color.color(random.nextDouble(), random.nextDouble(), random.nextDouble()));
             towers[0].push(disk);
             towerPane.getChildren().add(disk);
         }
