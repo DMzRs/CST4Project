@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -13,6 +14,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import project.automatatheoryproject.StartProgram;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
@@ -144,8 +148,16 @@ public class Towers {
     }
 
     @FXML
-    private void handleExit() {
-        System.exit(0);
+    private void handleExit() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(StartProgram.class.getResource("MainPage.fxml"));
+        Scene turingMachine = new Scene(fxmlLoader.load(), 800, 701);
+
+        Stage currentStage = (Stage) process.getScene().getWindow();
+        currentStage.setTitle("Main Page");
+        currentStage.setScene(turingMachine);
+        currentStage.setResizable(false);
+        currentStage.centerOnScreen();
+        currentStage.show();
     }
 
     @FXML
